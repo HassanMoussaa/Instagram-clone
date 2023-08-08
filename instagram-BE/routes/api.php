@@ -31,3 +31,11 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('posts/following', [PostController::class, 'getFollowingPosts']);
 Route::post('user/follow/{userId}', [FollowController::class, 'followUser']);
 Route::post('user/unfollow/{userId}', [FollowController::class, 'unfollowUser']);
+
+
+Route::post('posts/add', [PostController::class, 'createPost']);
+// Route::middleware('auth:api')->group(function () {
+
+
+
+// });
