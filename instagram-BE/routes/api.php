@@ -34,6 +34,11 @@ Route::post('user/unfollow/{userId}', [FollowController::class, 'unfollowUser'])
 
 
 Route::post('posts/add', [PostController::class, 'createPost']);
+Route::post('posts/like/{postId}', [PostController::class, 'likePost']);
+Route::post('posts/unlike/{postId}', [PostController::class, 'unlikePost']);
+Route::get('/posts/liked{postId}', [PostController::class, 'isPostLikedByUser']);
+
+
 // Route::middleware('auth:api')->group(function () {
 
 
