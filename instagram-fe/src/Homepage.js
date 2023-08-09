@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidenav from './navigation/Sidenav'
 import Timeline from './timeline/Timeline'
-
+import "./Homepage.css"
 function Homepage() {
   return (
     <div className='homepage'>
