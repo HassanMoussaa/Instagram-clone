@@ -13,7 +13,7 @@ function post({ post }) {
     <div className='post'>
       <div className='post__header'>
         <div className='post__headerAuthor'>
-          <Avatar>{post.user.name[0]}</Avatar>
+            <Avatar alt={post.user.name} src={post.user.image} />
           {post.user.username} . <span>{post.created_at}</span>
         </div>
         <MoreHorizIcon />

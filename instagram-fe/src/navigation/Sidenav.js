@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import "./Sidenav.css"
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,7 +8,21 @@ import ChatIcon from "@mui/icons-material/Chat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import MenuIcon from "@mui/icons-material/Menu";
+import Modal from "./Modal"
+
+
 function Sidenav() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCreateClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+    
   return (
     <div className='sidenav'>
     <img
@@ -50,12 +64,15 @@ function Sidenav() {
             <span>Notifications</span>    
         </button>
 
-        < button className='sidenav__button'>
+        < button className='sidenav__button' onClick={handleCreateClick}>
             <AddCircleOutlineIcon />
             <span>Create</span>    
         </button>
 
-        </div> 
+         {/* for modal work */}
+          {isModalOpen && <Modal onClose={handleModalClose} />}
+         
+      </div> 
 
           <div className='sidenav__more'>
            <button className='sidenav__button'>
