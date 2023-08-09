@@ -7,20 +7,21 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import "./Post.css";
 
-function post() {
+
+function post({ post }) {
   return (
     <div className='post'>
-     <div className='post__header'> 
-     <div className='post__headerAuthor'>   
-     <Avatar>R</Avatar>
-     redian_ . <span>12hr</span>
-     </div> 
-     <MoreHorizIcon />
-     </div>
-     <div className='post__image'>
-        <img src='https://blog.playstation.com/tachyon/2022/06/0c3c20a8d8514501524a0859461f391572ea6e61.jpg?resize=1088%2C612&crop_strategy=smart' alt=' post'/>
-         </div>
-     <div className="post__footer">
+      <div className='post__header'>
+        <div className='post__headerAuthor'>
+          <Avatar>{post.user.name[0]}</Avatar>
+          {post.user.username} . <span>{post.created_at}</span>
+        </div>
+        <MoreHorizIcon />
+      </div>
+      <div className='post__image'>
+        <img src={post.image_url} alt='post' />
+      </div>
+      <div className="post__footer">
         <div className="post__footerIcons">
           <div className="post__iconsMain">
             <FavoriteBorderIcon className="postIcon" />
@@ -31,10 +32,10 @@ function post() {
             <BookmarkBorderIcon className="postIcon" />
           </div>
         </div>
-        Liked by 21 people.
+        Liked by {post.likes_count} people.
       </div>
     </div>
-  )
+  );
 }
 
 export default post

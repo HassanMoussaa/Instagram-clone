@@ -16,7 +16,7 @@ const Signin = () => {
     });
     if (result.data.message === "success") {
       Cookies.set("jwt_token", result.data.authorization.token, { expires: 1 });
-      navigate("/contacts");
+      navigate("/Homepage");
     }
   };
 
