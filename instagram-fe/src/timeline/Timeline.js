@@ -36,7 +36,7 @@ const jwtToken = Cookies.get('jwt_token');
         ))}
       </div>
       <div className='timeline__right'>
-        {/* Render your suggestions component here */}
+        <Sugesstions />
       </div>
     </div>
   );
