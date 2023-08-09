@@ -12,7 +12,7 @@ class PostController extends Controller
     public function getFollowingPosts(Request $request)
     {
         $user = Auth::user();
-        $followingIds = $user->following()->pluck('id');
+        $followingIds = $user->following()->pluck('users.id');
 
         $followingPosts = Post::whereIn('user_id', $followingIds)->with('user')->get();
 
