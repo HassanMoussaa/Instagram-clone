@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/posts/liked{postId}', [PostController::class, 'isPostLikedByUser']);
 
     Route::get('/search/users', [SearchController::class, 'searchUsers']);
+    Route::get('/users', [SearchController::class, 'getAllUsers']);
 
 
 
