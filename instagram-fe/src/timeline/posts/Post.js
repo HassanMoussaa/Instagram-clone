@@ -68,7 +68,7 @@ function Post({ post }) {
       <div className='post__header'>
         <div className='post__headerAuthor'>
             <Avatar alt={post.user.name} src={post.user.image} />
-          {post.user.username} . <span>{post.created_at}</span>
+          {post.user.username} . <span>{new Date(post.created_at).toLocaleTimeString()}</span>
         </div>
         <MoreHorizIcon />
       </div>
