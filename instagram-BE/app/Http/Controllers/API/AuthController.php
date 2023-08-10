@@ -49,13 +49,24 @@ class AuthController extends Controller
                 'username' => 'required|string|unique:users',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             ]);
+
+            if ($request->hasFile('image')) {
+                $file_extension = $request->image->getClientOriginalExtension();
+                $file_name = time() . '.' . $file_extension;
+                $path = 'images';
+                $request->image->move($path, $file_name);
+                $image_url = "http://127.0.0.1:8000/images/" . $file_name;
+            }
+
 
             $user = User::create([
                 'name' => $request->name,
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'image' => $image_url ?? null,
             ]);
 
             return response()->json([
