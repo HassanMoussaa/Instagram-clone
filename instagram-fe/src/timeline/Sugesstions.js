@@ -10,6 +10,17 @@ function Suggestions() {
 
   useEffect(() => {
     fetchAllUsers();
+    
+    const updatedUsers = allUsers.map(user => {
+      const followStatus = localStorage.getItem(`followStatus_${user.id}`);
+      if (followStatus === 'followed') {
+        return { ...user, is_followed: true };
+      } else if (followStatus === 'unfollowed') {
+        return { ...user, is_followed: false };
+      }
+      return user;
+    });
+    setAllUsers(updatedUsers);
   }, []);
 
   const fetchAllUsers = async () => {
@@ -32,7 +43,9 @@ function Suggestions() {
           Authorization: `Bearer ${jwtToken}`,
         },
       });
-      // Update the state to reflect the change
+    
+      localStorage.setItem(`followStatus_${userId}`, 'followed');
+    
       setAllUsers(allUsers.map(user => user.id === userId ? { ...user, is_followed: true } : user));
     } catch (error) {
       console.error("Error following user:", error);
@@ -46,7 +59,9 @@ function Suggestions() {
           Authorization: `Bearer ${jwtToken}`,
         },
       });
-      // Update the state to reflect the change
+   
+      localStorage.setItem(`followStatus_${userId}`, 'unfollowed');
+     
       setAllUsers(allUsers.map(user => user.id === userId ? { ...user, is_followed: false } : user));
     } catch (error) {
       console.error("Error unfollowing user:", error);
