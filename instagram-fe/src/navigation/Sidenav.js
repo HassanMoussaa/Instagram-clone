@@ -9,18 +9,28 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "./Modal"
-
+import SearchModal from "./SearchModal";
 
 function Sidenav() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const handleCreateClick = () => {
     setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
+  };
+
+
+
+  const openSearchModal = () => {
+    setIsSearchModalOpen(true);
+  };
+
+  const closeSearchModal = () => {
+    setIsSearchModalOpen(false);
   };
     
   return (
@@ -38,10 +48,10 @@ function Sidenav() {
         </button>
 
 
-      <button className='sidenav__button'>
-            <SearchIcon />
-            <span>Search</span>    
-        </button>
+       <button className="sidenav__button" onClick={openSearchModal}>
+        <SearchIcon />
+        <span>Search</span>
+      </button>
 
          <button className='sidenav__button'>
             <ExploreIcon />
@@ -72,6 +82,10 @@ function Sidenav() {
          {/* for modal work */}
           {isModalOpen && <Modal onClose={handleModalClose} />}
          
+          {/* Search Modal */}
+          {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
+
+
       </div> 
 
           <div className='sidenav__more'>
