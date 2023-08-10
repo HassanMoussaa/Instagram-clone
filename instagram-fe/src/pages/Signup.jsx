@@ -40,6 +40,11 @@ const Signup = () => {
 
   return (
     <div className="signup_container">
+      <img
+        className="sidenav__logo"
+        src="https://www.pngkey.com/png/full/828-8286178_mackeys-work-needs-no-elaborate-presentation-or-distracting.png"
+        alt="Instagram Logo"
+      />
       <div>
         <h2>Sign Up</h2>
         <input

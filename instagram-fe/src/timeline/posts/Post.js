@@ -90,7 +90,7 @@ function Post({ post }) {
             <BookmarkBorderIcon className="postIcon" />
           </div>
         </div>
-        Liked by {post.likes_count} people.
+        
       </div>
     </div>
   );
