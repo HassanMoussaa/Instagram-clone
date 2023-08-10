@@ -42,7 +42,7 @@ function Sidenav() {
       />
 
      <div className='sidenav__buttons'>
-        <button className='sidenav__button'>
+        <button className='sidenav__button' onClick={() => window.location.reload()}>
             <HomeIcon />
             <span>Home</span>    
         </button>
