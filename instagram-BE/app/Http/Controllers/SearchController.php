@@ -22,16 +22,26 @@ class SearchController extends Controller
     }
 
 
-    public function getAllUsers()
+    public function getAllUsers(Request $request)
     {
-        $user = Auth::user();
-        $users = User::where('id', '<>', $user->id)->get();
+        $loggedInUser = Auth::user();
+        $allUsers = User::where('id', '<>', $loggedInUser->id)->get();
+
+        $usersWithFollowStatus = $allUsers->map(function ($user) use ($loggedInUser) {
+            $isFollowed = $loggedInUser->isFollowing($user);
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'username' => $user->username,
+                'image' => $user->image,
+                'is_followed' => $isFollowed,
+            ];
+        });
 
         return response()->json([
             'message' => 'All users retrieved successfully',
-            'users' => $users,
+            'users' => $usersWithFollowStatus,
         ]);
     }
-
 
 }
