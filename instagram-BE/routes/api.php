@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\LikeController;
 
 
 /*
@@ -43,9 +44,9 @@ Route::middleware('auth:api')->group(function () {
 
 
     Route::post('posts/add', [PostController::class, 'createPost']);
-    Route::post('posts/like/{postId}', [PostController::class, 'likePost']);
-    Route::post('posts/unlike/{postId}', [PostController::class, 'unlikePost']);
-    Route::get('/posts/liked{postId}', [PostController::class, 'isPostLikedByUser']);
+    Route::post('posts/like/{postId}', [LikeController::class, 'likePost']);
+    Route::post('posts/unlike/{postId}', [LikeController::class, 'unlikePost']);
+    Route::get('/posts/liked/{postId}', [LikeController::class, 'isPostLikedByUser']);
 
     Route::get('/search/users', [SearchController::class, 'searchUsers']);
     Route::get('/users', [SearchController::class, 'getAllUsers']);
