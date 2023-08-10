@@ -44,3 +44,7 @@
 .postIcon :hover {
   cursor: pointer;
 }
+
+.postIconLiked {
+  color: red;
+}
