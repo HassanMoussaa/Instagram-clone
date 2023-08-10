@@ -27,7 +27,7 @@ const Signup = () => {
         formData
       );
       if (result.data.message === "User created successfully") {
-        navigate("/signin");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error during registration:", error);
@@ -39,7 +39,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="signin_container">
+    <div className="signup_container">
       <div>
         <h2>Sign Up</h2>
         <input
