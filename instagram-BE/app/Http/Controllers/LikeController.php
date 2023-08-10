@@ -26,6 +26,8 @@ class LikeController extends Controller
         $like->user_id = $user->id;
         $post->likes()->save($like);
 
+        $post->increment('likes_count');
+
         return response()->json([
             'message' => 'Post liked successfully',
         ]);
@@ -43,6 +45,7 @@ class LikeController extends Controller
                 'message' => 'You have not liked this post',
             ], 400);
         }
+        $post->decrement('likes_count');
 
         $like->delete();
 
