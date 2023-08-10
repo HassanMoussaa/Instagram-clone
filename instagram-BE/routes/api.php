@@ -48,7 +48,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('posts/unlike/{postId}', [LikeController::class, 'unlikePost']);
     Route::get('/posts/liked/{postId}', [LikeController::class, 'isPostLikedByUser']);
 
-    Route::get('/search/users', [SearchController::class, 'searchUsers']);
+    Route::post('/search/users', [SearchController::class, 'searchUsers']);
     Route::get('/users', [SearchController::class, 'getAllUsers']);
 
 
