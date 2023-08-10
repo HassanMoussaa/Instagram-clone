@@ -1,12 +1,20 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./SearchResults.css"
 
 function SearchResults() {
   const location = useLocation();
   const users = location.state.users;
+   const navigate = useNavigate();
+
+
+    const handleBack = () => {
+    navigate("/Homepage"); 
+  };
 
   return (
     <div>
+      <button className="back-button" onClick={handleBack}>Back to Homepage</button>
       <h1>Search Results</h1>
       <ul className="search-results-list">
         {users.map((user) => (
@@ -23,6 +31,7 @@ function SearchResults() {
           </li>
         ))}
       </ul>
+      
     </div>
   );
 }
