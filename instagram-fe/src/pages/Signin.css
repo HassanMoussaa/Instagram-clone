@@ -27,7 +27,7 @@
 }
 
 .signin_container button {
-  width: 10rem;
+  width: 8rem;
   height: 2.5rem;
   background-color: #4caf50;
   color: white;
@@ -43,4 +43,10 @@
 
 .signin_container button:active {
   background-color: #3e8e41;
+}
+
+.signin_signup {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
 }

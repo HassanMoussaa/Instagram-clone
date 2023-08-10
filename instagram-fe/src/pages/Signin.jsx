@@ -20,6 +20,10 @@ const Signin = () => {
     }
   };
 
+  const signUp = () => {
+    navigate("/signup");
+  };
+
   return (
     <div className="signin_container">
       <div>
@@ -43,8 +47,13 @@ const Signin = () => {
           }}
         />
       </div>
-      <div>
-        <button onClick={submit}>Submit</button>
+      <div className="signin_signup">
+        <div>
+          <button onClick={submit}>Submit</button>
+        </div>
+        <div>
+          <button onClick={signUp}>Sign Up</button>
+        </div>
       </div>
     </div>
   );
